@@ -1,0 +1,23 @@
+name: benchmark
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.10', '3.12', '3.14']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Verify fixtures and candidate protocol
+        env:
+          PYTHONPATH: src
+        run: python -m unittest discover -s tests -v
+      - name: Reproduce reference report
+        env:
+          PYTHONPATH: src
+        run: python -m antegraph_bench.cli --output reports/ci.json

@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0",
+  "case_id": "department-move",
+  "category": "department",
+  "provenance": "synthetic_generated",
+  "generator_version": "1.0",
+  "review_status": "pending_human_review",
+  "mutation": "move",
+  "old_policy": {
+    "schema_version": "1.0",
+    "rules": [
+      {
+        "append": [
+          "Manager"
+        ],
+        "when": []
+      },
+      {
+        "append": [
+          "Director"
+        ],
+        "when": [
+          {
+            "field": "department",
+            "op": "==",
+            "value": "engineering"
+          }
+        ]
+      }
+    ]
+  },
+  "new_policy": {
+    "schema_version": "1.0",
+    "rules": [
+      {
+        "append": [
+          "Manager"
+        ],
+        "when": []
+      },
+      {
+        "append": [
+          "Director"
+        ],
+        "when": [
+          {
+            "field": "department",
+            "op": "==",
+            "value": "sales"
+          }
+        ]
+      }
+    ]
+  },
+  "domain": {
+    "amount_cents": [
+      0,
+      999999,
+      1000000,
+      1000001,
+      1250000,
+      1500000,
+      1500001,
+      2000000
+    ],
+    "category": [
+      "software",
+      "services",
+      "hardware"
+    ],
+    "department": [
+      "engineering",
+      "sales"
+    ]
+  },
+  "request": {
+    "amount_cents": 1250000,
+    "currency": "USD",
+    "category": "software",
+    "department": "engineering"
+  },
+  "expected": {
+    "case_id": "department-move",
+    "changed": true,
+    "counterexample": {
+      "amount_cents": 0,
+      "currency": "USD",
+      "category": "software",
+      "department": "engineering"
+    },
+    "old_path": [
+      "Manager",
+      "Director"
+    ],
+    "new_path": [
+      "Manager"
+    ],
+    "added_approvals": [],
+    "removed_approvals": [
+      "Director"
+    ],
+    "order_changed": false
+  }
+}

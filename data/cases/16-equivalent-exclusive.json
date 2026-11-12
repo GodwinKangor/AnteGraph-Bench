@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.0",
+  "case_id": "equivalent-exclusive",
+  "category": "equivalent",
+  "provenance": "synthetic_generated",
+  "generator_version": "1.0",
+  "review_status": "pending_human_review",
+  "mutation": "exclusive",
+  "old_policy": {
+    "schema_version": "1.0",
+    "rules": [
+      {
+        "append": [
+          "Manager"
+        ],
+        "when": []
+      },
+      {
+        "append": [
+          "Security"
+        ],
+        "when": [
+          {
+            "field": "category",
+            "op": "==",
+            "value": "software"
+          }
+        ]
+      },
+      {
+        "append": [
+          "Legal"
+        ],
+        "when": [
+          {
+            "field": "category",
+            "op": "==",
+            "value": "services"
+          }
+        ]
+      }
+    ]
+  },
+  "new_policy": {
+    "schema_version": "1.0",
+    "rules": [
+      {
+        "append": [
+          "Manager"
+        ],
+        "when": []
+      },
+      {
+        "append": [
+          "Legal"
+        ],
+        "when": [
+          {
+            "field": "category",
+            "op": "==",
+            "value": "services"
+          }
+        ]
+      },
+      {
+        "append": [
+          "Security"
+        ],
+        "when": [
+          {
+            "field": "category",
+            "op": "==",
+            "value": "software"
+          }
+        ]
+      }
+    ]
+  },
+  "domain": {
+    "amount_cents": [
+      0,
+      999999,
+      1000000,
+      1000001,
+      1250000,
+      1500000,
+      1500001,
+      2000000
+    ],
+    "category": [
+      "software",
+      "services",
+      "hardware"
+    ],
+    "department": [
+      "engineering",
+      "sales"
+    ]
+  },
+  "request": {
+    "amount_cents": 1250000,
+    "currency": "USD",
+    "category": "software",
+    "department": "engineering"
+  },
+  "expected": {
+    "case_id": "equivalent-exclusive",
+    "changed": false,
+    "counterexample": null,
+    "old_path": [
+      "Manager",
+      "Security"
+    ],
+    "new_path": [
+      "Manager",
+      "Security"
+    ],
+    "added_approvals": [],
+    "removed_approvals": [],
+    "order_changed": false
+  }
+}

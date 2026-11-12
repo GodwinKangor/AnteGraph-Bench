@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "antegraph-bench"
+version = "0.1.0.dev1"
+description = "Finite-domain procurement approval policy-change benchmark"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{name = "AnteGraph-Bench contributors"}]
+
+[project.scripts]
+antegraph-bench = "antegraph_bench.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

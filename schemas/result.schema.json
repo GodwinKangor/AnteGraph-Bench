@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "result.schema.json",
+  "type": "object",
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "changed": {
+      "type": "boolean"
+    },
+    "counterexample": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "request.schema.json"
+        }
+      ]
+    },
+    "old_path": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "new_path": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "added_approvals": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "removed_approvals": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "order_changed": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "case_id",
+    "changed",
+    "counterexample",
+    "old_path",
+    "new_path"
+  ],
+  "additionalProperties": false
+}

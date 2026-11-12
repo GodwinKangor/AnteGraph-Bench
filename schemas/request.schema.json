@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "request.schema.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "amount_cents": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "currency": {
+      "const": "USD"
+    },
+    "category": {
+      "type": "string",
+      "minLength": 1
+    },
+    "department": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "amount_cents",
+    "currency",
+    "category",
+    "department"
+  ],
+  "additionalProperties": false
+}
